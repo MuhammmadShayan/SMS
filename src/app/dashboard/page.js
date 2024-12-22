@@ -1,6 +1,40 @@
-import React from 'react'
+'use client'
+import React , {useState} from 'react'
+import { useEffect } from 'react'
 
 export default function Dashboard() {
+ const [studentTotalSum, setStudentTotalSum] = useState([]);
+ const [teacherTotalSum, setteacherTotalSum] = useState([]);
+ const [feesTotalAmount, setfeesTotalAmount] = useState([]);
+
+  useEffect( () => {
+         fetch('api/getAllStudentsTotal')
+         .then(response => response.json())
+         .then((data)=>{
+          setStudentTotalSum(data)
+             console.log("Get Total Student Sum Data:", data);
+ 
+         })
+         .catch(error => console.log("error fetching data from api", error));
+      
+         fetch('api/getAllTeachersTotal')
+         .then(response => response.json())
+         .then((data)=>{
+          setteacherTotalSum(data) 
+          console.log("Get Total Teacher Sum Data:", data);
+         })
+         .catch(error => console.log("error fetching data from teacher api", error));
+
+         fetch('api/getTotalFees')
+         .then(response => response.json())
+         .then((data) =>{
+          setfeesTotalAmount(data)
+          console.log("fetching data from fees api:", data)
+         })
+         .catch(error => console.log("error fetching data from totalfees api", error))
+        }
+  
+)
   return (
     <div>
 
@@ -40,8 +74,8 @@ export default function Dashboard() {
                 <div className="card-block">
                   <div className="row align-items-center">
                     <div className="col-8">
-                      <h4 className="text-c-purple">$30200</h4>
-                      <h6 className="text-muted m-b-0">All Earnings</h6>
+                      <h4 className="text-c-purple">{studentTotalSum}</h4>
+                      <h6 className="text-muted m-b-0">Total Students</h6>
                     </div>
                     <div className="col-4 text-right">
                       <i className="fa fa-bar-chart f-28" />
@@ -65,8 +99,8 @@ export default function Dashboard() {
                 <div className="card-block">
                   <div className="row align-items-center">
                     <div className="col-8">
-                      <h4 className="text-c-green">290+</h4>
-                      <h6 className="text-muted m-b-0">Page Views</h6>
+                      <h4 className="text-c-green">{teacherTotalSum}</h4>
+                      <h6 className="text-muted m-b-0">Total Teacher</h6>
                     </div>
                     <div className="col-4 text-right">
                       <i className="fa fa-file-text-o f-28" />
@@ -90,8 +124,8 @@ export default function Dashboard() {
                 <div className="card-block">
                   <div className="row align-items-center">
                     <div className="col-8">
-                      <h4 className="text-c-red">145</h4>
-                      <h6 className="text-muted m-b-0">Task Completed</h6>
+                      <h4 className="text-c-red">{feesTotalAmount}</h4>
+                      <h6 className="text-muted m-b-0">Total Fees</h6>
                     </div>
                     <div className="col-4 text-right">
                       <i className="fa fa-calendar-check-o f-28" />
@@ -116,7 +150,7 @@ export default function Dashboard() {
                   <div className="row align-items-center">
                     <div className="col-8">
                       <h4 className="text-c-blue">500</h4>
-                      <h6 className="text-muted m-b-0">Downloads</h6>
+                      <h6 className="text-muted m-b-0">Remaining Fees</h6>
                     </div>
                     <div className="col-4 text-right">
                       <i className="fa fa-hand-o-down f-28" />

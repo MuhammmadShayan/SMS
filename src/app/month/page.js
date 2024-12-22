@@ -1,27 +1,28 @@
 "use client"
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { Button } from "react-bootstrap";
+import React from 'react'
 import HeaderComponent from '@/components/HeaderComponent'
-import TableComponent from "@/components/TableComponent";
+import TableComponent from '@/components/TableComponent'
+import { useState, useEffect } from 'react';
 
-export default function Classes() {
+export default function Month() {
 
-  const [classRecord, setClassRecord] = useState([]);
+
+  const [monthRecord, setMonthRecord] = useState([]);
   const [formData, setFormData] = useState({
-    name: "",
+    month_name: "",
   });
 
   useEffect(() => {
-    fetch("/api/classes")
+    fetch("/api/months")
       .then((response) => response.json())
       .then((data) => {
-        setClassRecord(data);
+        setMonthRecord(data);
         console.log(data);
       })
-      .catch(error => console.error("Error fetching data:", error));
+      .catch(error => console.error("Error fetching month data:", error));
   }, []);
 
+  
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -29,11 +30,13 @@ export default function Classes() {
       [name]: type === "checkbox" ? checked : value,
     });
   };
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try{
-        const response = await fetch('/api/insertClasses',{
+        const response = await fetch('/api/insertMonths',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -42,7 +45,7 @@ export default function Classes() {
         });
 
         if (response.ok){
-          alert('student added successfully!');
+          alert('Month added successfully!');
           window.location.reload();
         }else{
           const result = await response.json();
@@ -55,18 +58,14 @@ export default function Classes() {
   };
 
 
-
-
   return (
-    <div className="pcoded-content">
-      {/* Page-header start */}
-      
-      <HeaderComponent 
-          title="Classes" 
-          subTitle="Manage and view classes information, attendance records, and individual profiles all in one place"/>
+    <div>
 
-      {/* Page-header end */}
-      <div className="pcoded-inner-content">
+<HeaderComponent
+title="Month"
+subTitle="Add Month"
+/>
+<div className="pcoded-inner-content">
         {/* Main-body start */}
         <div className="main-body">
           <div className="page-wrapper">
@@ -76,22 +75,22 @@ export default function Classes() {
                 <div className="col-md-4">
                   <div className="card">
                     <div className="card-header">
-                      <h5>Add new class</h5>
+                      <h5>Add Month </h5>
                       {/*<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>*/}
                     </div>
                     <div className="card-block">
-                      <form className="form-material" onSubmit={handleSubmit}>
+                      <form className="form-material" onSubmit={handleSubmit} >
                         <div className="form-group form-default">
                           <input
                             type="text"
-                            name="name"
+                            name="month_name"
                             className="form-control"
-                            value={formData.name}
+                            value={formData.month_name}
                             onChange={handleChange}
                             required
                           />
                           <span className="form-bar" />
-                          <label className="float-label">Class Name</label>
+                          <label className="float-label">Month Name</label>
                         </div>
                         <button type="submit">submit</button>
                       </form>
@@ -99,13 +98,14 @@ export default function Classes() {
                   </div>
                 </div>
                 <div className="col-md-8">
-                  <TableComponent tableRecord={classRecord} recordName="classes" tableTitle={"Class List"}/>
+                  <TableComponent tableRecord={monthRecord} recordName="months" tableTitle={"Month list"}/>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
     </div>
-  );
+  )
 }

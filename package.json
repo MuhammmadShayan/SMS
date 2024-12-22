@@ -10,9 +10,16 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.3",
+    "bootstrap-select": "^1.13.18",
+    "jquery": "^3.7.1",
+    "mysql2": "^3.11.5",
     "next": "15.0.3",
-    "react": "^18.3.1",
+    "react": "19.0.0-rc-66855b96-20241106",
     "react-bootstrap": "^2.10.6",
-    "react-dom": "^18.3.1"
+    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "react-paginate": "^8.2.0",
+    "react-select": "^5.9.0",
+    "react-table": "^7.8.0",
+    "select2": "^4.1.0-rc.0"
   }
 }

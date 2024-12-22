@@ -5,6 +5,7 @@ import './globals.css';
 import './dashboard.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Nav} from "react-bootstrap";
+import Link from 'next/link';
 
 export default function RootLayout({ children }) {
   return (
@@ -26,7 +27,7 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon" />
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet" />
         <link rel="stylesheet" href="/assets/pages/waves/css/waves.min.css" />
-        <link rel="stylesheet" href="/assets/css/bootstrap/css/bootstrap.min.css" />
+        
         <link rel="stylesheet" href="/assets/icon/themify-icons/themify-icons.css" />
         <link rel="stylesheet" href="/assets/icon/font-awesome/css/font-awesome.min.css" />
         <link rel="stylesheet" href="/assets/css/jquery.mCustomScrollbar.css" />
@@ -37,17 +38,17 @@ export default function RootLayout({ children }) {
         <div id="pcoded" className="pcoded">
           <div className="pcoded-overlay-box"></div>
           <div className="pcoded-container navbar-wrapper">
-            <nav className="navbar header-navbar pcoded-header">
+            <nav className="navbar header-navbar pcoded-header" style={{backgroundColor: "black"}}>
               <div className="navbar-wrapper">
                 <div className="navbar-logo">
                   <a className="mobile-menu waves-effect waves-light" id="mobile-collapse" href="#!">
-                    <i className="ti-menu"></i>
+                    <i className="ti-menu" style={{color: "white"}}></i>
                   </a>
                   <a href="index.html">
                     <img className="img-fluid" src="/assets/images/logo.png" alt="Theme-Logo" />
                   </a>
                   <a className="mobile-options waves-effect waves-light">
-                    <i className="ti-more"></i>
+                    <i className="ti-more" ></i>
                   </a>
                 </div>
                 <div className="navbar-container container-fluid">
@@ -61,7 +62,7 @@ export default function RootLayout({ children }) {
                     </li>
                     <li>
                       <a href="#!" className="waves-effect waves-light" onClick={() => toggleFullScreen()}>
-                        <i className="ti-fullscreen"></i>
+                        <i className="ti-fullscreen" style={{color: "white"}}></i>
                       </a>
                     </li>
                   </ul>
@@ -73,8 +74,8 @@ export default function RootLayout({ children }) {
                           className="img-radius"
                           alt="User-Profile-Image"
                         />
-                        <span>John Doe</span>
-                        <i className="ti-angle-down"></i>
+                        <span style={{color: "white"}}>John Doe</span>
+                        <i className="ti-angle-down" style={{color: "white"}}></i>
                       </a>
                       <ul className="show-notification profile-notification">
                         <li>
@@ -124,75 +125,97 @@ export default function RootLayout({ children }) {
                     </div>
                     <ul className="pcoded-item pcoded-left-item">
                       <li className="active">
-                        <a href="/dashboard" className="waves-effect waves-dark">
+                        <Link href="/dashboard" className="waves-effect waves-dark">
                           <span className="pcoded-micon">
-                            <i className="ti-home"></i>
+                            <i style={{color:"black"}}  className="ti-home"></i>
                           </span>
                           <span className="pcoded-mtext">Dashboard</span>
-                        </a>
+                        </Link>
                       </li>
                       <li className="pcoded-hasmenu">
-                        <a href="javascript:void(0)" className="waves-effect waves-dark">
+                        <Link href="/classes" className="waves-effect waves-dark">
                           <span className="pcoded-micon">
-                            <i className="ti-layout-grid2-alt"></i>
+                            <i style={{color:"black"}} className="ti-layout-grid2-alt"></i>
                           </span>
                           <span className="pcoded-mtext">Classes</span>
-                        </a>
-                        <ul className="pcoded-submenu">
-                          <li>
-                            <a href="/classes" className="waves-effect waves-dark">
-                              <span className="pcoded-mtext">List Class</span>
-                            </a>
-                          </li>
-                        </ul>
+                        </Link>
+                        
                       </li>
 
                       <li className="pcoded-hasmenu">
-                        <a href="javascript:void(0)" className="waves-effect waves-dark">
+                        <Link href="/subject" className="waves-effect waves-dark">
                           <span className="pcoded-micon">
-                            <i className="ti-layout-grid2-alt"></i>
+                            <i style={{color:"black"}} className="ti-layout-grid2-alt"></i>
+                          </span>
+                          <span className="pcoded-mtext">Subject</span>
+                        </Link>
+                        
+                      </li>
+
+                      <li className="pcoded-hasmenu">
+                        <Link href="/parents" className="waves-effect waves-dark">
+                          <span className="pcoded-micon">
+                            <i style={{color: "black"}} className="ti-layout-grid2-alt"></i>
                           </span>
                           <span className="pcoded-mtext">Parents</span>
-                        </a>
-                        <ul className="pcoded-submenu">
-                          <li>
-                            <a href="/parents" className="waves-effect waves-dark">
-                              <span className="pcoded-mtext">Parents list</span>
-                            </a>
-                          </li>
-                        </ul>
+                        </Link>
+                        
                       </li>
 
                       <li className="pcoded-hasmenu">
-                        <a href="javascript:void(0)" className="waves-effect waves-dark">
+                        <Link href="/teacher" className="waves-effect waves-dark">
                           <span className="pcoded-micon">
-                            <i className="ti-layout-grid2-alt"></i>
+                            <i style={{color:'black'}} className="ti-layout-grid2-alt"></i>
                           </span>
                           <span className="pcoded-mtext">Teacher</span>
-                        </a>
-                        <ul className="pcoded-submenu">
-                          <li>
-                            <a href="/teacher" className="waves-effect waves-dark">
-                              <span className="pcoded-mtext">Teacher List</span>
-                            </a>
-                          </li>
-                        </ul>
+                        </Link>
+                       
+                        
                       </li>
 
                       <li className="pcoded-hasmenu">
-                        <a href="javascript:void(0)" className="waves-effect waves-dark">
+                        <Link href="/students" className="waves-effect waves-dark">
                           <span className="pcoded-micon">
-                            <i className="ti-layout-grid2-alt"></i>
+                            <i style={{color:"black"}} className="ti-layout-grid2-alt"></i>
                           </span>
                           <span className="pcoded-mtext">Student</span>
-                        </a>
-                        <ul className="pcoded-submenu">
-                          <li>
-                            <a href="/students" className="waves-effect waves-dark">
-                              <span className="pcoded-mtext">Student list</span>
-                            </a>
-                          </li>
-                        </ul>
+                        </Link>
+                       
+                        
+                      </li>
+
+                      <li className="pcoded-hasmenu">
+                        <Link href="/fees" className="waves-effect waves-dark">
+                          <span className="pcoded-micon">
+                            <i style={{color:"black"}} className="ti-layout-grid2-alt"></i>
+                          </span>
+                          <span className="pcoded-mtext">fees</span>
+                        </Link>
+                       
+                        
+                      </li>
+
+                      <li className="pcoded-hasmenu">
+                        <Link href="/attendence" className="waves-effect waves-dark">
+                          <span className="pcoded-micon">
+                            <i style={{color:"black"}} className="ti-layout-grid2-alt"></i>
+                          </span>
+                          <span className="pcoded-mtext">attendance</span>
+                        </Link>
+                       
+                        
+                      </li>
+
+
+                      <li className="pcoded-hasmenu">
+                        <Link href="/settings" className="waves-effect waves-dark">
+                          <span className="pcoded-micon">
+                            <i style={{color:"black"}} className="ti-layout-grid2-alt"></i>
+                          </span>
+                          <span className="pcoded-mtext">Setting</span>
+                        </Link>
+                       
+                        
                       </li>
 
                     </ul>
